@@ -11,5 +11,7 @@ feature "URl shortener" do
     visit '/'
     fill_in "old_url", :with => "http://www.google.com"
     click_on "Shorten"
+    expect(page).to have_content("http://www.google.com")
+    expect(page).to have_content("http://stagingurl.herokuapp.com/1")
   end
 end
