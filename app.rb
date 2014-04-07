@@ -12,7 +12,7 @@ class App < Sinatra::Application
     old_url = params[:old_url]
     id = URLS.length + 1
     shortened_url = "http://stagingurl.herokuapp.com/#{id}"
-    URLS << {
+    URLS = {
       :old_url => old_url,
       :shortened_url => shortened_url}
     erb :stats, :locals => {:old_url => old_url, :shortened_url => shortened_url}
