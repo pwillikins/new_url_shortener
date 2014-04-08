@@ -17,8 +17,12 @@ class App < Sinatra::Application
   end
 
   get '/:id' do
-    redirect_page = URLS[0][:old_url]
-    redirect redirect_page
+    id = params[:id].to_i - 1
+    redirect_page = URLS[id][:old_url]
+    if redirect_page =~ /\Ahttps?:\/\//
+      redirect redirect_page
+    else
+      redirect "http://#{redirect_page}"
+    end
   end
-
 end
